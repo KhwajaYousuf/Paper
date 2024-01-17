@@ -13,7 +13,7 @@ function getRef {
 }
 function update {
     cd "$workdir/$1"
-    $gitcmd fetch && $gitcmd clean -fd && $gitcmd reset --hard origin/master
+    $gitcmd fetch && $gitcmd clean -fd && $gitcmd reset --hard origin/main
     refRemote=$(git rev-parse HEAD)
     cd ../
     $gitcmd add --force $1
@@ -29,7 +29,7 @@ update CraftBukkit
 update Spigot
 
 if [[ "$2" = "all" || "$2" = "a" ]] ; then
-	update BuildData
+    update BuildData
 fi
 if [ "$updated" == "1" ]; then
     echo "Rebuilding patches without filtering to improve apply ability"
